@@ -85,6 +85,10 @@ All secure endpoints require [authentication](#constructing-the-request).
 | [/api/v3/fiat/deposit-history](#post-apiv3fiatdeposit-history)   | POST   |       |         |          |
 | [/api/v3/fiat/withdraw-history](#post-apiv3fiatwithdraw-history) | POST   |       |         |          |
 
+| BKP Endpoint                                                           | Method | Trade | Deposit | Withdraw |
+| ------------------------------------------------------------------------- | ------ | ----- | ------- | -------- |
+| [/api/v3/user/coin-convert-history](#get-apiv3usercoin-convert-history)   | GET    |       |         |          |
+
 # Constructing the request
 ### GET/POST request
 * GET requests require parameters as **query string** in the URL (e.g. ?sym=THB_BTC&lmt=10). 
@@ -1107,6 +1111,52 @@ Check deposit/withdraw limitations and usage.
           }
        },
        "rate": 224790 // current THB rate used to calculate
+    }
+}
+```
+
+## BKP Endpoint
+
+### GET /api/v3/user/coin-convert-history
+#### Description:
+List all coin convert histories (paginated).
+
+### Query (URL):
+* `p` **int** Page default = 1 (optional)
+* `lmt` **int** Limit default = 100 (optional)
+* `sort` **int** Sort [1, -1] default = 1 (optional)
+* `status` **string** Status [success, fail, all] (default = all) (optional)
+* `sym` **string** The symbol (optional)
+  * e.g. KUB
+* `start` **int** Start timestamp (optional)
+* `end` **int** End timestamp (optional)
+
+
+### Response:
+```javascript
+{
+    "error": 0,
+    "result": [
+        {
+            "transaction_id": "6800dc34eb519fe64d879c79",
+            "status": "fail",
+            "amount": "1",
+            "from_currency": "KUB",
+            "trading_fee_received": 0,
+            "timestamp": 1735689600000
+        },
+        {
+            "transaction_id": "6800dc1aeb519fe64d879c78",
+            "status": "success",
+            "amount": "1.488801",
+            "from_currency": "KUB",
+            "trading_fee_received": 700,
+            "timestamp": 1744904474000
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "last": 1
     }
 }
 ```
