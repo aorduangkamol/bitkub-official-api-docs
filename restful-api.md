@@ -1138,25 +1138,26 @@ List all coin convert histories (paginated).
     "error": 0,
     "result": [
         {
-            "transaction_id": "6800dc34eb519fe64d879c79",
-            "status": "fail",
-            "amount": "1",
+            "transaction_id": "67ef4ca7ddb88f34ce16a126",
+            "status": "success",
+            "amount": "0.0134066",
             "from_currency": "KUB",
-            "trading_fee_received": 0,
-            "timestamp": 1735689600000
+            "trading_fee_received": "1.34",
+            "timestamp": 1743761171000
         },
         {
-            "transaction_id": "6800dc1aeb519fe64d879c78",
-            "status": "success",
-            "amount": "1.488801",
+            "transaction_id": "6707a7426fb3370035725c03",
+            "status": "fail",
+            "amount": "0.000006",
             "from_currency": "KUB",
-            "trading_fee_received": 700,
-            "timestamp": 1744904474000
+            "trading_fee_received": "0",
+            "timestamp": 1728580016000
         }
     ],
     "pagination": {
         "page": 1,
-        "last": 1
+        "last": 12,
+        "next": 2
     }
 }
 ```
